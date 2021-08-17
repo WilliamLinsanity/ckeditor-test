@@ -2,6 +2,9 @@ const path = require( 'path' );
 const CKEditorWebpackPlugin = require( '@ckeditor/ckeditor5-dev-webpack-plugin' );
 const { styles } = require( '@ckeditor/ckeditor5-dev-utils' );
 
+function resolve(dir) {
+	return path.join(__dirname, dir)
+}
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/ckeditor-test/' : '/',
     // The source of CKEditor is encapsulated in ES6 modules. By default, the code
@@ -28,6 +31,8 @@ module.exports = {
     //	1. The icons used by CKEditor must be loaded using raw-loader,
     //	2. The CSS used by CKEditor must be transpiled using PostCSS to load properly.
     chainWebpack: config => {
+        config.resolve.alias
+		.set('@$', resolve('src'))
         // (1.) To handle the editor icons, get the default rule for *.svg files first:
         const svgRule = config.module.rule( 'svg' );
 

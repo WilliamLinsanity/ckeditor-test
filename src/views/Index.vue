@@ -23,7 +23,7 @@ export default {
         handleSubmit(){
             // location.href="http://localhost:8080"
             console.log(document.cookie);
-            // this.$router.push({name: 'Result', params:{ data: this.editorData} })
+            this.$router.push({name: 'Result', params:{ data: this.editorData} })
         }
     },
     created(){
@@ -32,6 +32,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '~@/assets/css/content';
 .editor{
     .submit{
         margin-top: 20px;
